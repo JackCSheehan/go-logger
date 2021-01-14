@@ -14,7 +14,7 @@ import (
 
 // Example goLogger usage
 func main() {
-	logger := goLogger.Logger {
+    logger := goLogger.Logger {
 		ShouldLogTime: true,
 		ShouldLogDate: true,
 		ShouldLogFunc: true,
