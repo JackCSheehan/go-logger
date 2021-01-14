@@ -1,4 +1,4 @@
-module github.com/JackCSheehan/go-logger/m
+module github.com/JackCSheehan/go-logger/v1.0.0
 
 go 1.15
 
