@@ -1,12 +1,15 @@
 package main
 
-
 import (
 	"./goLogger"
 )
 
 // Example goLogger usage
 func main() {
-	logger := goLogger.Logger{true, true, true}
-	logger.Debug("REACHED THIS POINT")
+	logger := goLogger.Logger {
+		ShouldLogTime: true,
+		ShouldLogDate: true,
+		ShouldLogFunc: true,
+	}
+	logger.Warning("REACHED THIS POINT")
 }
