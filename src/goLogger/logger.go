@@ -1,12 +1,14 @@
 /*
 File containing defintion of Logger struct
 */
-package goLogging
+package goLogger
 
 import (
 	"fmt"
 	"time"
 	"github.com/fatih/color"
+	"runtime"
+	"strconv"
 )
 
 // Color constants for each output type
@@ -29,6 +31,7 @@ Struct containing methods needed for logging
 type Logger struct {
 	ShouldLogTime	bool	// If time should be logged
 	ShouldLogDate	bool	// If date should be logged with time
+	ShouldLogFunc	bool	// If current function should be logged
 }
 
 /*
@@ -43,7 +46,12 @@ func (logger Logger) logTime() {
 
 	// Print date if date flag set
 	if logger.ShouldLogDate {
-		fmt.Print(nowTime.Date())
+		// Format year and month for printing
+		year := strconv.Itoa(nowTime.Year())[2:]
+		day := strconv.Itoa(nowTime.Day())
+		month := nowTime.Month().String()[:3]
+
+		fmt.Printf("%s %s '%s | ", month, day, year)
 	}
 
 	// Print time
@@ -58,13 +66,18 @@ func (logger Logger) log(logType LogType, message string) {
 	// Change color and print indicator based on log type
 	if logType == debug {
 		color.Set(debugColor)
-		fmt.Print("DEBUG:")
+		fmt.Print("[DEBUG]")
 	} else if logType == warn {
 		color.Set(warningColor)
-		fmt.Print("WARNING:")
+		fmt.Print("[WARNING]")
 	} else {
 		color.Set(errorColor)
-		fmt.Print("ERROR:")
+		fmt.Print("[ERROR]")
+	}
+
+	// Log current function name if function flag set
+	if logger.ShouldLogFunc {
+		fmt.Printf("[%s]", logger.getFunctionName())
 	}
 
 	// Log time if time flag set
@@ -97,4 +110,15 @@ Method for displaying an error message
 */
 func (logger Logger) Error(message string) {
 	logger.log(err, message)
+}
+
+/*
+Private helper function which returns the name of the function currently being run
+*/
+func (logger Logger) getFunctionName() string {
+	// Get name of current function
+	pc, _, _, _ := runtime.Caller(3)
+	fn := runtime.FuncForPC(pc)
+
+	return fn.Name()
 }

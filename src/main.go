@@ -2,12 +2,11 @@ package main
 
 
 import (
-	"./goLogging"
+	"./goLogger"
 )
 
+// Example goLogger usage
 func main() {
-	logger := goLogging.Logger{true, false}
-	logger.Debug("Here's a debug message")
-	logger.Warning("Here's a warning message")
-	logger.Error("Here's an error message")
+	logger := goLogger.Logger{true, true, true}
+	logger.Debug("REACHED THIS POINT")
 }
