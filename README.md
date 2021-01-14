@@ -4,12 +4,18 @@ A simple logging utility for Go. Created to help learn the Go language.
 ### Dependencies
 - [color](https://github.com/fatih/color)
 
+### Installation
+You can get the package by using `go get`
+```bash
+$ go get github.com/JackCSheehan/go-logger
+```
+
 ### Example Usage
 ```go
 package main
 
 import (
-	"./goLogger"
+	"github.com/JackCSheehan/go-logger"
 )
 
 // Example goLogger usage
