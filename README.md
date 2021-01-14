@@ -9,15 +9,15 @@ A simple logging utility for Go. Created to help learn the Go language.
 package main
 
 import (
-"./goLogger"
+	"./goLogger"
 )
 
 // Example goLogger usage
 func main() {
     logger := goLogger.Logger {
-	ShouldLogTime: true,
-	ShouldLogDate: true,
-	ShouldLogFunc: true,
+		ShouldLogTime: true,
+		ShouldLogDate: true,
+		ShouldLogFunc: true,
     }
     logger.Debug("REACHED THIS POINT")
     logger.Warning("REACHED THIS POINT")
