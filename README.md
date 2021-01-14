@@ -25,10 +25,13 @@ func main() {
 }
 ```
 This will output the following:
+```
+[DEBUG][function][date | time] REACHED THIS POINT
+[WARNING][function][date | time] REACHED THIS POINT
+[ERROR][function][date | time] REACHED THIS POINT
+```
 
-> <div style="color: cyan;">[DEBUG][function][date | time] REACHED THIS POINT</div>
-> <div style="color: yellow;">[WARNING][function][date | time] REACHED THIS POINT</div>
-> <div style="color: red;">[ERROR][function][date | time] REACHED THIS POINT</div>
+Debug outputs are cyan, warning outputs are yellow, and error outputs are red.
 
 Each flag set in the instantiation of the Logger struct has a special influence on the output:
 |Flag|Description|
